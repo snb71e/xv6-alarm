@@ -111,11 +111,12 @@ sys_sigalarm(void)
 uint64
 sys_sigreturn(void) {
   struct proc *p = myproc();
+  uint64 saved_a0 = p->alarm_tf_backup.a0;
 
   *(p->trapframe) = p->alarm_tf_backup;
   p->trapframe->a0 = 0;
 
   p->alarm_ticks_left = p->alarm_interval;
   p->in_alarm = 0;
-  return 0;
+  return saved_a0;
 }
