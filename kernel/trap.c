@@ -65,12 +65,12 @@ usertrap(void)
     intr_on();
 
     syscall();
-  } else if((which_dev = devintr()) != 0){
+  } else if((which_dev = devintr()) != 0){ // interrupt
     if (which_dev == 2) {
-      if (p && p->alarm_interval > 0 && !p->in_alarm) {
-        if (--p->alarm_ticks_left <= 0) {
-          p->alarm_tf_backup = *(p->trapframe);
-          p->trapframe->epc = p->alarm_handler;
+      if (p && p->alarm_interval > 0 && !p->in_alarm) { // alarm 설정이 되어 있고 handler가 실행중이 아닐 때
+        if (--p->alarm_ticks_left <= 0) { 
+          p->alarm_tf_backup = *(p->trapframe); // trapframe 백업
+          p->trapframe->epc = p->alarm_handler; // handler로 점프
           p->in_alarm = 1;
         }
       }

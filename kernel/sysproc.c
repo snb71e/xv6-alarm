@@ -102,10 +102,10 @@ sys_sigalarm(void)
   argaddr(1, &handler);
 
   struct proc *p = myproc();
-  p->alarm_interval = ticks;
+  p->alarm_interval = ticks; 
   p->alarm_ticks_left = ticks;
   p->alarm_handler = handler;
-  return 0;
+  return 0; 
 }
 
 uint64
@@ -113,10 +113,10 @@ sys_sigreturn(void) {
   struct proc *p = myproc();
   uint64 saved_a0 = p->alarm_tf_backup.a0;
 
-  *(p->trapframe) = p->alarm_tf_backup;
-  p->trapframe->a0 = 0;
+  *(p->trapframe) = p->alarm_tf_backup; // register 복구
+  p->trapframe->a0 = 0; 
 
-  p->alarm_ticks_left = p->alarm_interval;
-  p->in_alarm = 0;
+  p->alarm_ticks_left = p->alarm_interval; // tick 초기화
+  p->in_alarm = 0; // in_alarm flag 초기화
   return saved_a0;
 }

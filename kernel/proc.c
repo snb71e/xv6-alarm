@@ -126,7 +126,7 @@ allocproc(void)
 found:
   p->pid = allocpid();
   p->state = USED;
-  
+  // alarm fields 초기화
   p->alarm_interval = 0;
   p->alarm_ticks_left = 0;
   p->alarm_handler = 0;
