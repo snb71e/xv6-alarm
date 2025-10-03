@@ -27,14 +27,14 @@ It extends xv6 by implementing two new system calls: `sigalarm` and `sigreturn`.
 
 ---
 ## Modified Files
-- user/user.h : added function prototypes for sigalarm and sigreturn
-- user/usys.pl : added system call entries
-- kernel/syscall.h : defined SYS_sigalarm and SYS_sigreturn
-- kernel/syscall.c : added syscall mapping
-- kernel/proc.h : added alarm-related fields
-- kernel/proc.c : initialized alarm fields
-- kernel/sysproc.c : implemented sys_sigalarm and sys_sigreturn
-- kernel/trap.c : added alarm handler logic in the timer interrupt path
+- `user/user.h` : added function prototypes for sigalarm and sigreturn
+- `user/usys.pl` : added system call entries
+- `kernel/syscall.h` : defined SYS_sigalarm and SYS_sigreturn
+- `kernel/syscall.c` : added syscall mapping
+- `kernel/proc.h` : added alarm-related fields
+- `kernel/proc.c` : initialized alarm fields
+- `kernel/sysproc.c` : implemented sys_sigalarm and sys_sigreturn
+- `kernel/trap.c` : added alarm handler logic in the timer interrupt path
 
 ## Run test in xv6
 At the xv6 prompt:
