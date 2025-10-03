@@ -3,7 +3,7 @@
 This repository is based on the **Traps Lab** from the xv6 **Operating System** assignments.  
 It extends xv6 by implementing two new system calls: `sigalarm` and `sigreturn`.
 
----
+
 
 ## Implementation Details
 
